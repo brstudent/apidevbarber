@@ -20,4 +20,19 @@ Tabelas:
 -baberservices
 -babertestimonials
 -baberavailability
+
+---- Estrutura de ERROR -----
+
+$array = ['error' => ''];
+
+
+return $array;
+
+
+
+
+
+
+
+
 	
