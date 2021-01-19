@@ -1,0 +1,23 @@
+
+- Usuários
+---Barbeiros Favoritos
+---Agendamentos
+
+- Barbeiros
+---Fotos
+---Notas
+---Depoimentos
+---Disponibilidade
+
+	
+Tabelas:
+-users
+-userfavorites
+-userappointments
+-babers
+-baberphotos
+-baberreviews
+-baberservices
+-babertestimonials
+-baberavailability
+	
