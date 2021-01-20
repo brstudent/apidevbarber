@@ -6,7 +6,20 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private $loggedUser;
+
     public function __construct() {
-        $this->middleware('auth:api', ['except' => ['create', 'login']]);
+        $this->middleware('auth:api');
+        $this->loggedUser = auth()->user();
+    }
+
+    public function read() {
+        $array = ['error' => ''];
+
+        $info = $this->loggedUser;
+        $info['avatar'] = url('media/avatars/'.$info['avatar']);
+        $array['data'] = $info;
+
+        return $array;
     }
 }
