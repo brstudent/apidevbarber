@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
-use App\Models\Baber;
+use App\Models\Barber;
 use App\Models\BarberPhotos;
 use App\Models\BarberServices;
 use App\Models\BarberTestimonial;
@@ -40,7 +40,7 @@ class BarberController extends Controller
                 'Lorem Ipsum used since the 1500s is reproduced below for those interested.'
             ];
 
-            $newBarber = new Baber();
+            $newBarber = new Barber();
             $newBarber->name = $names[rand(0, count($names)-1)].' '.$lastnames[rand(0, count($lastnames)-1)];
             $newBarber->avatar = rand(1, 4).'.png';
             $newBarber->stars = rand(2, 4).'.'.rand(0, 9);
@@ -52,22 +52,22 @@ class BarberController extends Controller
 
             for ($w = 0; $w < 4; $w++) { 
                 $newBarberPhoto = new BarberPhotos();
-                $newBarberPhoto->id_baber = $newBarber->id;
+                $newBarberPhoto->id_barber = $newBarber->id;
                 $newBarberPhoto->url = rand(1, 5).'.png';
                 $newBarberPhoto->save();
             }
 
             for ($w = 0; $w < $ns; $w++) { 
                 $newBarberServices = new BarberServices();
-                $newBarberServices->id_baber = $newBarber->id;
+                $newBarberServices->id_barber = $newBarber->id;
                 $newBarberServices->name = $servicos[rand(0, count($servicos)-1)].' de '.$servicos2[rand(0, count($servicos2)-1)];
                 $newBarberServices->price = rand(1, 99).'.'.rand(0, 100);
                 $newBarberServices->save();
             }
 
             for ($w = 0; $w < 3; $w++) { 
-                $newBarberTestimonial = new BarberServices();
-                $newBarberTestimonial->id_baber = $newBarber->id;
+                $newBarberTestimonial = new BarberTestimonial();
+                $newBarberTestimonial->id_barber = $newBarber->id;
                 $newBarberTestimonial->name = $names[rand(0, count($names)-1)].' '.$lastnames[rand(0, count($lastnames)-1)];
                 $newBarberTestimonial->rate = rand(2, 4).'.'.rand(0, 9);
                 $newBarberTestimonial->body = $depos[rand(0, count($depos)-1)];
@@ -85,7 +85,7 @@ class BarberController extends Controller
                     $hours[] = $time.':00';
                 }
                 $newBaberAvail = new BarberAvailability();
-                $newBaberAvail->id_barber = $newBaber->id;
+                $newBaberAvail->id_barber = $newBarber->id;
                 $newBaberAvail->weekday = $e;
                 $newBaberAvail->hours = implode(',',$hours);
                 $newBaberAvail->save();
